@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post | InstaSocial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/create-post.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <h2 class="logo">InstaSocial</h2>
+            <div class="menu">
+                <a href="dashboard.html"><i class="fas fa-home"></i> <span>Home</span></a>
+                <a href="create-post.html" class="active"><i class="fas fa-plus-square"></i> <span>Create</span></a>
+                <a href="favorites.html"><i class="far fa-heart"></i> <span>Favorites</span></a>
+                <a href="profile.html"><i class="far fa-user-circle"></i> <span>Profile</span></a>
+            </div>
+        </nav>
+
+        <main class="creator-main">
+            <div class="create-box">
+                <div class="box-header">
+                    <button onclick="location.href='dashboard.html'">Cancel</button>
+                    <b>New Post</b>
+                    <button class="share-btn" onclick="submitPost()">Share</button>
+                </div>
+                
+                <div class="box-content">
+                    <div class="media-preview" id="pBox">
+                        <div class="upload-ui" onclick="document.getElementById('fileInp').click()">
+                            <i class="fas fa-photo-video"></i>
+                            <p>Drag photos and videos here</p>
+                            <span class="btn-purple">Select from computer</span>
+                        </div>
+                    </div>
+                    <input type="file" id="fileInp" hidden onchange="handlePreview(event)" accept="image/*,video/*">
+
+                    <div class="info-pane">
+                        <div class="user-row">
+                            <img src="https://i.pravatar.cc/150?u=me" class="av-mini">
+                            <span id="uNameDisplay">Username</span>
+                        </div>
+                        <textarea id="capText" placeholder="Write a caption..."></textarea>
+                        
+                        <div class="emoji-list">
+                            <span onclick="addEmo('❤️')">❤️</span>
+                            <span onclick="addEmo('🔥')">🔥</span>
+                            <span onclick="addEmo('🙌')">🙌</span>
+                            <span onclick="addEmo('✨')">✨</span>
+                            <span onclick="addEmo('😂')">😂</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/create-post.js"></script>
+</body>
+</html>

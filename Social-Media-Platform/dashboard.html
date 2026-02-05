@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InstaSocial | Home</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <h2 class="logo">InstaSocial</h2>
+            <div class="menu">
+                <a href="dashboard.html" class="active"><i class="fas fa-home"></i> <span>Home</span></a>
+                <a href="create-post.html"><i class="far fa-plus-square"></i> <span>Create</span></a>
+                <a href="favorites.html"><i class="far fa-heart"></i> <span>Favorites</span></a>
+                <a href="profile.html"><i class="far fa-user-circle"></i> <span>Profile</span></a>
+                <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </nav>
+
+        <main class="feed-container">
+            <div class="feed-heading">Recent Feeds</div>
+            <div id="postFeed" class="feed"></div>
+        </main>
+
+        <aside class="right-side">
+            <div class="user-info-side">
+                <img src="https://i.pravatar.cc/150?u=me" class="av" id="sideAv"> 
+                <b id="uName">User</b>
+            </div>
+            <p style="color: gray; margin: 20px 0; font-size: 14px; font-weight: bold;">Suggested for you</p>
+            <div id="suggestionList"></div>
+        </aside>
+    </div>
+
+    <div id="commentModal" class="modal">
+        <div class="comment-box">
+            <div class="m-header">
+                <b>Comments</b>
+                <button onclick="closeComments()">&times;</button>
+            </div>
+            <div id="cList" class="c-list"></div>
+            <div class="c-footer">
+                <input type="text" id="cInp" placeholder="Add a comment...">
+                <button onclick="sendComment()">Post</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

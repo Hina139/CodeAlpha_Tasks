@@ -1,0 +1,232 @@
+:root { 
+    --p: #a855f7; /* Purple Theme color */
+    --gray: #262626; 
+}
+
+body { 
+    background: #000; 
+    color: white; 
+    margin: 0; 
+    font-family: sans-serif; 
+    overflow: hidden; /* Page scroll na ho */
+}
+
+.app-container { display: flex; }
+
+/* Sidebar */
+.sidebar { 
+    width: 250px; 
+    height: 100vh; 
+    position: fixed; 
+    border-right: 1px solid var(--gray); 
+    padding: 25px; 
+    background: #000; 
+    z-index: 100; 
+}
+
+.logo { color: var(--p); font-style: italic; margin-bottom: 40px; font-weight: bold; }
+
+.menu a { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 12px; 
+    color: #ccc; 
+    text-decoration: none; 
+    border-radius: 10px; 
+    margin-bottom: 5px; 
+}
+
+.menu a.active { background: var(--p); color: white; }
+
+/* Creator Layout */
+.creator-main { 
+    margin-left: 250px; 
+    flex: 1; 
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.create-box { 
+    background: #1a1a1a; 
+    width: 850px; 
+    height: 550px; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    border: 1px solid #333; 
+}
+
+.box-header { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 12px 15px; 
+    border-bottom: 1px solid #333; 
+    align-items: center; 
+}
+
+.box-header button { 
+    background: none; 
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+    font-size: 14px; 
+}
+
+/* Share button Purple */
+.share-btn { color: var(--p) !important; font-weight: bold; font-size: 15px; }
+
+.box-content { display: flex; flex: 1; min-height: 0; /* Important for flex child */ }
+
+/* ========================================= */
+/* MEDIA PREVIEW FIX: Line hamesha dikhegi */
+/* ========================================= */
+.media-preview { 
+    flex: 1.4; 
+    background: #000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative; 
+    overflow: hidden; /* Bahar jane wali video ko contain karega */
+}
+
+.media-preview video, 
+.media-preview img { 
+    max-width: 100%; 
+    max-height: 100%; /* Is se video box ke height se bahar nahi niklegi */
+    object-fit: contain; /* Aspect ratio maintain rahega */
+    display: block;
+}
+
+/* Video controls specifically for seek bar */
+video::-webkit-media-controls-enclosure {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+/* ========================================= */
+
+.upload-ui { text-align: center; cursor: pointer; }
+.upload-ui i { font-size: 50px; margin-bottom: 15px; color: #555; }
+
+/* Select button Purple */
+.btn-purple { 
+    background: var(--p); 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    font-weight: bold; 
+    font-size: 13px; 
+    display: inline-block; 
+    margin-top: 15px; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.info-pane { flex: 1; padding: 20px; border-left: 1px solid #333; display: flex; flex-direction: column; }
+.user-row { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+.av-mini { width: 30px; height: 30px; border-radius: 50%; }
+
+textarea { 
+    width: 100%; 
+    flex: 1; /* Space cover karega */
+    background: none; 
+    border: none; 
+    color: white; 
+    resize: none; 
+    outline: none; 
+    font-size: 15px; 
+}
+
+.emoji-list { display: flex; gap: 12px; font-size: 20px; cursor: pointer; margin-top: 10px; }
+
+
+
+
+
+
+
+/* --- MODERN CREATOR RESPONSIVE FIX --- */
+
+@media (max-width: 900px) {
+    .create-box {
+        width: 95%; /* Box ko width ke hisab se stretch kiya */
+        height: 650px; /* Height thori barhai stack hone ke liye */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Mobile pe scrolling enable ki */
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 60px;
+        bottom: 0;
+        top: auto;
+        padding: 0;
+        flex-direction: row;
+        border-right: none;
+        border-top: 1px solid var(--gray);
+    }
+
+    .logo { display: none; }
+
+    .menu {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .menu a { margin-bottom: 0; padding: 15px; }
+    .menu a span { display: none; } /* Sirf icons dikhengi */
+
+    .creator-main {
+        margin-left: 0; /* Sidebar ka space khatam */
+        padding: 20px 10px 80px 10px; /* Bottom nav ke liye space */
+        align-items: flex-start; /* Mobile pe top se start hoga */
+    }
+
+    /* Create Box Transformation */
+    .create-box {
+        width: 100%;
+        height: auto;
+        max-width: 500px; /* Mobile pe zyada wide na ho */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .box-content {
+        flex-direction: column; /* Media upar, Info niche */
+    }
+
+    .media-preview {
+        flex: none;
+        width: 100%;
+        height: 350px; /* Media ka area fix kiya */
+        border-bottom: 1px solid #333;
+    }
+
+    .info-pane {
+        flex: none;
+        width: 100%;
+        border-left: none;
+        padding: 15px;
+        height: 250px;
+    }
+
+    textarea {
+        height: 100px;
+        flex: none; /* Mobile pe textarea fixed height behtar hai */
+    }
+}
+
+/* Screen bohat choti ho to text size adjust */
+@media (max-width: 480px) {
+    .box-header b { font-size: 14px; }
+    .media-preview { height: 300px; }
+    .create-box { border-radius: 0; border: none; } /* Full screen feel */
+}

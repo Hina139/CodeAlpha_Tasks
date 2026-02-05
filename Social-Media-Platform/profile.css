@@ -1,0 +1,150 @@
+:root { --purple: #9333ea; --dark: #000; --gray: #121212; --text-gray: #a8a8a8; }
+
+body { background: var(--dark); color: white; margin: 0; font-family: -apple-system, sans-serif; overflow-x: hidden; }
+
+.app-container { display: flex; }
+
+/* Sidebar Fixed (Isay nahi chhairna) */
+.sidebar { width: 250px; height: 100vh; background: black; border-right: 1px solid #262626; position: fixed; padding: 20px; z-index: 1000; }
+.sidebar .logo { color: var(--purple); font-style: italic; margin-bottom: 35px; font-size: 24px; text-align: center; }
+
+.menu a { display: flex; align-items: center; gap: 15px; color: #eee; text-decoration: none; padding: 12px 15px; border-radius: 10px; margin-bottom: 10px; transition: 0.3s; }
+.menu a.active { background: var(--purple); color: white; font-weight: bold; }
+
+/* Main Content Fix (Text Navbar ke neechay nahi jayega) */
+.main-content { 
+    margin-left: 250px; /* Navbar ki jagah chhori */
+    width: calc(100% - 250px); 
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* Cover Photo */
+.cover-wrapper { width: 100%; height: 250px; position: relative; cursor: pointer; overflow: hidden; background: #222; }
+.cover-photo { width: 100%; height: 100%; object-fit: cover; }
+.camera-icon-cover { position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+
+/* Profile Info Section (Isme padding barha di taake text side se clear ho) */
+.profile-info-section { padding: 0 10%; }
+.dp-overlap { margin-top: -75px; margin-bottom: 20px; position: relative; display: inline-block; }
+
+.dp-container { position: relative; width: 150px; height: 150px; cursor: pointer; border-radius: 50%; overflow: hidden; border: 5px solid black; background: #1a1a1a; }
+.main-dp { width: 100%; height: 100%; object-fit: cover; }
+
+.camera-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; }
+.dp-container:hover .camera-overlay { opacity: 1; }
+.camera-overlay i { font-size: 24px; color: white; }
+
+.user-details-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.name-bio h2 { font-size: 24px; margin: 0; }
+.bio { color: var(--text-gray); margin-top: 5px; font-size: 14px; }
+
+.btn-edit { background: #363636; border: none; color: white; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+
+.stats-bar { display: flex; gap: 40px; list-style: none; padding: 20px 0; border-top: 1px solid #262626; margin-top: 20px; }
+.stats-bar li { text-align: center; }
+.stats-bar li b { font-size: 18px; color: white; display: block; }
+.stats-bar li span { color: var(--text-gray); font-size: 13px; }
+
+/* Post Grid Fix (Images choti karne ke liye columns barhaye) */
+.tabs { display: flex; justify-content: center; border-top: 1px solid #262626; margin-top: 10px; }
+.tab { padding: 15px; border-top: 1px solid white; font-size: 12px; font-weight: bold; letter-spacing: 1px; color: white; }
+
+/* Grid ko repeat(4, 1fr) kiya taake images thodi choti aur neat lagy */
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 8px; 
+    padding: 20px 10%; 
+}
+.grid-item { aspect-ratio: 1/1; background: #111; border-radius: 4px; overflow: hidden; border: 1px solid #262626; }
+.grid-item img, .grid-item video { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+.grid-item:hover { filter: brightness(0.8); transform: translateY(-2px); }
+
+
+
+/* --- FULL RESPONSIVE & NO-SCROLL FIX --- */
+
+/* Reset for all elements to prevent width overflow */
+* {
+    box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+    .grid { grid-template-columns: repeat(3, 1fr); padding: 20px 5%; }
+}
+
+@media (max-width: 768px) {
+    /* 1. Sidebar to Bottom Nav (No Scrollbar) */
+    .sidebar {
+        width: 100% !important;
+        height: 60px;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        padding: 0;
+        border-right: none;
+        border-top: 1px solid #262626;
+        flex-direction: row;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .sidebar .logo, .menu a span { display: none; }
+
+    .menu {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        margin: 0;
+    }
+
+    .menu a { margin-bottom: 0; padding: 10px; }
+
+    /* 2. Main Content Adjustment (Kills Horizontal Scroll) */
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100vw; /* Ensure it stays within viewport */
+        padding-bottom: 80px; /* Space for bottom nav */
+    }
+
+    /* 3. Profile Info Styling */
+    .profile-info-section { padding: 0 15px; } /* Mobile pe side padding kam */
+    
+    .user-details-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .dp-overlap { margin-top: -60px; }
+    .dp-container { width: 100px; height: 100px; }
+
+    /* 4. Stats Bar Fix */
+    .stats-bar {
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    /* 5. Grid for Mobile (3 columns like Instagram) */
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px; /* Thin gap for pro look */
+        padding: 5px; /* Minimal padding */
+    }
+}
+
+/* 6. Extra Small Screens Fix */
+@media (max-width: 480px) {
+    .cover-wrapper { height: 160px; }
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-bar li b { font-size: 15px; }
+    .stats-bar li span { font-size: 11px; }
+    .name-bio h2 { font-size: 20px; }
+}
