@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<style>
+    .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; color: #1a1a1a; text-decoration: none; letter-spacing: 2px; }
+        .logo span { color: #b35a38; }
+</style>
+<body>
+    <div id="auth-screen" class="screen">
+    <div class="auth-card">
+        <div class="header-visual">
+            <div class="nav-bar">
+                <div class="logo-group">
+                    <div class="logo-box"></div>
+                    <a href="index.html" class="logo">MO<span>DEVA</span></a>
+                </div>
+                <button class="switch-btn" id="topToggle">Login</button>
+            </div>
+            <div class="image-container">
+                <img src="first.png" alt="Cart">
+                <p class="tagline">Discover the art of dressing up.</p>
+            </div>
+        </div>
+
+        <div class="form-area">
+            <div id="signup-form">
+                <h2 class="title">CREATE ACCOUNT</h2>
+                <p class="subtitle">Join our fashion community</p>
+                <div class="input-wrapper"><i class="fa-solid fa-user"></i><input type="text" id="s-user" placeholder="User Name"></div>
+                <div class="input-wrapper"><i class="fa-solid fa-envelope"></i><input type="email" id="s-email" placeholder="Email Address"></div>
+                <div class="input-wrapper"><i class="fa-solid fa-lock"></i><input type="password" id="s-pass" placeholder="Password"></div>
+                <button class="action-btn" onclick="registerUser()">SIGN UP</button>
+            </div>
+            
+            <div id="login-form" class="hidden">
+                <h2 class="title">USER LOGIN</h2>
+                <p class="subtitle">Welcome back</p>
+                <div class="input-wrapper"><i class="fa-solid fa-user"></i><input type="text" id="l-email" placeholder="Email or Username"></div>
+                <div class="input-wrapper"><i class="fa-solid fa-lock"></i><input type="password" id="l-pass" placeholder="Password"></div>
+                <button class="action-btn" onclick="loginUser()">LOGIN</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js" >
+
+</script>
+</body>
+</html>
